@@ -1,4 +1,5 @@
 import type { Params } from 'nestjs-pino';
+import { Request, Response } from 'express';
 
 export const loggerConfig: Params = {
   pinoHttp: {
@@ -13,12 +14,12 @@ export const loggerConfig: Params = {
       },
     },
     serializers: {
-      req: (req) => ({
+      req: (req: Request) => ({
         method: req.method,
         url: req.url,
         headers: req.headers,
       }),
-      res: (res) => ({
+      res: (res: Response) => ({
         statusCode: res.statusCode,
       }),
     },
