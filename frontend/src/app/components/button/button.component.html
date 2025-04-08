@@ -1,0 +1,5 @@
+<button 
+  [ngClass]="'btn ' + (color === 'green' ? 'btn-green' : color === 'red' ? 'btn-red' : '')" 
+  (click)="onClick()">
+  {{text}}
+</button>

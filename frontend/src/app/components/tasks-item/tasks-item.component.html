@@ -1,0 +1,15 @@
+<div class="task" [ngClass]="getPriorityClass(task.priority)">
+    <h3>
+        {{task.title}} 
+        <div class="task-actions">
+            <fa-icon (click)="onEdit(task)" [icon]="faEdit" class="edit-icon" title="Edit task"></fa-icon>
+            <fa-icon (click)="onDelete(task)" [icon]="faTimes" class="delete-icon" title="Delete task"></fa-icon>
+        </div>
+    </h3>
+    <p *ngIf="task.description" class="description">{{task.description}}</p>
+    <div class="task-details">
+        <span class="priority-badge" [ngClass]="'priority-badge-' + task.priority">{{task.priority}}</span>
+        <span class="date-info" *ngIf="task.created_at">Created: {{task.created_at | date: 'MMM d, y, h:mm a'}}</span>
+        <span class="date-info" *ngIf="task.updated_at && task.updated_at !== task.created_at">Updated: {{task.updated_at | date: 'MMM d, y, h:mm a'}}</span>
+    </div>
+</div>
