@@ -1,0 +1,52 @@
+<div class="container">
+  <!-- Error Message Display -->
+  <div *ngIf="errorMessage" class="error-message">
+    <p>{{ errorMessage }}</p>
+  </div>
+
+  <!-- Add or Edit Task Form -->
+  <div *ngIf="showAddTask && !selectedTask" class="add-form">
+    <app-add-task (onAddTask)="addTask($event)"></app-add-task>
+  </div>
+
+  <!-- Edit Task Form (shown when a task is selected for editing) -->
+  <div *ngIf="selectedTask" class="edit-form">
+    <h3>Edit Task</h3>
+    <div class="form-control">
+      <label for="edit-title">Title</label>
+      <input type="text" id="edit-title" [(ngModel)]="selectedTask.title" required>
+    </div>
+    <div class="form-control">
+      <label for="edit-description">Description</label>
+      <textarea id="edit-description" [(ngModel)]="selectedTask.description" rows="3"></textarea>
+    </div>
+    <div class="form-control">
+      <label for="edit-priority">Priority</label>
+      <select id="edit-priority" [(ngModel)]="selectedTask.priority">
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+      </select>
+    </div>
+    <div class="form-buttons">
+      <button class="btn update-btn" (click)="updateTask(selectedTask)">Update</button>
+      <button class="btn cancel-btn" (click)="cancelEdit()">Cancel</button>
+    </div>
+  </div>
+
+  <!-- Task List Header -->
+  <div class="tasks-header">
+    <h2 *ngIf="tasks.length > 0">Your Tasks</h2>
+    <p *ngIf="tasks.length === 0">No tasks to show</p>
+  </div>
+
+  <!-- Task List -->
+  <div class="tasks-container">
+    <app-tasks-item 
+      *ngFor="let task of tasks" 
+      [task]="task" 
+      (onDeleteTask)="deleteTask(task)" 
+      (onEditTask)="editTask(task)">
+    </app-tasks-item>
+  </div>
+</div>
