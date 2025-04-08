@@ -15,10 +15,45 @@ header h1 {
   letter-spacing: -0.5px;
 }
 
+.auth-actions {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.username {
+  font-weight: 500;
+  color: #333;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 10px;
+}
+
 @media (max-width: 576px) {
   header {
     flex-direction: column;
     text-align: center;
     gap: 15px;
+  }
+
+  .auth-actions {
+    margin: 15px 0;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .user-info, 
+  .auth-buttons {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
   }
 }

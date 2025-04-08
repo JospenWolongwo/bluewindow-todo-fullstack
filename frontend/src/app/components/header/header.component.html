@@ -1,8 +1,30 @@
 <header>
     <h1>{{ title }}</h1>
-    <app-button *ngIf="hasRouter('/')"
-    color="{{showAddTask ? 'red' : 'green'}}" 
-    text="{{showAddTask ? 'Close' : 'Add'}}"
-    (btnClick)="toggleAddTask()">
+    <div class="auth-actions">
+        <div *ngIf="isLoggedIn" class="user-info">
+            <span class="username">Welcome, {{ username }}</span>
+            <app-button 
+                color="red" 
+                text="Logout"
+                (btnClick)="onLogout()">
+            </app-button>
+        </div>
+        <div *ngIf="!isLoggedIn" class="auth-buttons">
+            <app-button 
+                color="blue" 
+                text="Login"
+                routerLink="/login">
+            </app-button>
+            <app-button 
+                color="green" 
+                text="Register"
+                routerLink="/register">
+            </app-button>
+        </div>
+    </div>
+    <app-button *ngIf="hasRouter('/') && isLoggedIn"
+        color="{{showAddTask ? 'red' : 'green'}}" 
+        text="{{showAddTask ? 'Close' : 'Add'}}"
+        (btnClick)="toggleAddTask()">
     </app-button>
 </header>
