@@ -1,43 +1,32 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { FormsModule } from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
 
+import { JwtInterceptor } from './interceptors/jwt.interceptor';
+import { AuthGuard } from './guards/auth.guard';
 
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
-import { ButtonComponent } from './components/button/button.component';
-import { TasksComponent } from './components/tasks/tasks.component';
-import { TasksItemComponent } from './components/tasks-item/tasks-item.component';
-import { AddTaskComponent } from './components/add-task/add-task.component';
-import { AboutComponent } from './pages/about/about.component';
-import { FooterComponent } from './pages/footer/footer.component';
-
-const appRoutes = [
-  {path: '', component: TasksComponent},
-  {path: 'about', component: AboutComponent},
-]
+/**
+ * This module exists for compatibility with existing code
+ * but the application actually uses bootstrapApplication for
+ * standalone components in main.ts
+ */
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    ButtonComponent,
-    TasksComponent,
-    TasksItemComponent,
-    AddTaskComponent,
-    AboutComponent,
-    FooterComponent
-  ],
+  declarations: [], // No components declared here - using standalone components
   imports: [
     BrowserModule,
     FontAwesomeModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes, {enableTracing: true})
+    ReactiveFormsModule,
+    AppRoutingModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    AuthGuard
+  ]
+  // No bootstrap array - bootstrapped in main.ts instead
 })
 export class AppModule { }

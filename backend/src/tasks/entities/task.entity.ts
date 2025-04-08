@@ -4,8 +4,10 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  ManyToOne,
 } from 'typeorm';
 import { TaskPriority } from '../../types/task.type';
+import { User } from '../../auth/entities/user.entity';
 
 @Entity()
 export class Task {
@@ -20,6 +22,9 @@ export class Task {
 
   @Column({ type: 'enum', enum: ['low', 'medium', 'high'] })
   priority: TaskPriority;
+
+  @ManyToOne(() => User, (user: User) => user.tasks, { nullable: true })
+  user: User;
 
   @CreateDateColumn()
   created_at: Date;

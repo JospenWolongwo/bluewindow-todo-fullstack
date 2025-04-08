@@ -3,11 +3,17 @@ import { TaskService } from 'src/app/services/task.service';
 import { Task } from 'src/app/Task';
 import { UiService } from 'src/app/services/ui.service';
 import { Subscription } from 'rxjs';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { TasksItemComponent } from '../tasks-item/tasks-item.component';
+import { AddTaskComponent } from '../add-task/add-task.component';
 
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.component.html',
-  styleUrls: ['./tasks.component.css']
+  styleUrls: ['./tasks.component.css'],
+  standalone: true,
+  imports: [CommonModule, FormsModule, TasksItemComponent, AddTaskComponent]
 })
 export class TasksComponent implements OnInit {
   tasks: Task[] = [];

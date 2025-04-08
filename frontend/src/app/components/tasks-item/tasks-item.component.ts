@@ -1,11 +1,15 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Task } from 'src/app/Task';
 import { faTimes, faEdit } from '@fortawesome/free-solid-svg-icons';
+import { CommonModule } from '@angular/common';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @Component({
   selector: 'app-tasks-item',
   templateUrl: './tasks-item.component.html',
-  styleUrls: ['./tasks-item.component.css']
+  styleUrls: ['./tasks-item.component.css'],
+  standalone: true,
+  imports: [CommonModule, FontAwesomeModule]
 })
 export class TasksItemComponent implements OnInit {
   constructor() { }
