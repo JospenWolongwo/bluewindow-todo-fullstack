@@ -2,6 +2,10 @@
 
 A full-stack todo application with authentication built with NestJS, TypeORM, PostgreSQL, and Angular.
 
+[![Railway Deployed](https://img.shields.io/badge/Deployed%20on-Railway-blueviolet)](https://bluewindow-todo-fullstack-production.up.railway.app)
+
+![Tasks Management](frontend/src/assets/screenshots/tasks-page.png)
+
 ## Features
 
 - User authentication with JWT
@@ -40,7 +44,7 @@ A full-stack todo application with authentication built with NestJS, TypeORM, Po
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/bluewindow-todo-fullstack.git
+git clone https://github.com/JospenWolongwo/bluewindow-todo-fullstack.git
 cd bluewindow-todo-fullstack
 ```
 
@@ -114,6 +118,16 @@ bluewindow-todo-fullstack/
 
 See `.env.example` for required environment variables.
 
+## Screenshots
+
+### Tasks Management Page
+
+![Tasks Management](frontend/src/assets/screenshots/tasks-page.png)
+
+### Login Page
+
+![Login Screen](frontend/src/assets/screenshots/login-page.png)
+
 ## Contributing
 
 1. Fork the repository
@@ -121,3 +135,10 @@ See `.env.example` for required environment variables.
 3. Commit your changes (`git commit -m 'Add some amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
+
+## Contact
+
+- **Developer**: Jospen Wolongwo
+- **Email**: [jospenwolongwo@gmail.com](mailto:jospenwolongwo@gmail.com)
+- **Website**: [jospenwolongwo.com](https://jospenwolongwo.com)
+- **GitHub**: [JospenWolongwo](https://github.com/JospenWolongwo)
